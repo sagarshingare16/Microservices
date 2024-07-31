@@ -15,8 +15,8 @@ public class ApplicationController {
     @Autowired
     private ApplicationService applicationService;
 
-    @GetMapping("/hello")
-    public ResponseEntity<String> hello() {
-       return new ResponseEntity<>(applicationService.hello(), HttpStatus.OK);
+    @GetMapping("/welcome")
+    public ResponseEntity<String> welcome() {
+        return new ResponseEntity<>(applicationService.welcome(), HttpStatus.OK);
     }
 }
