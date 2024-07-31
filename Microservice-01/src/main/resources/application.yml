@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: Microservice-Application-01
+  cloud:
+    compatibility-verifier:
+      enabled: false
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080/
+server:
+  port: 8181
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
