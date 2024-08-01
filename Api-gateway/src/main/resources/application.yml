@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: Microservice-Api-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lowercase-service-id: true
+      routes:
+        -id: service-01-api
+        uri: lb://APPLICATION-01
+        predicates:
+          - Path=/application/hello/**
+          - id: service-02-api
+            uri: lb://APPLICATION-02
+            predicates:
+              - Path=/application/welcome/**
+server:
+  port: 4444
