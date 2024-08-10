@@ -6,15 +6,16 @@ spring:
       discovery:
         locator:
           enabled: true
-          lowercase-service-id: true
+          lower-case-service-id: true
       routes:
-        -id: service-01-api
-        uri: lb://APPLICATION-01
-        predicates:
-          - Path=/application/hello/**
-          - id: service-02-api
-            uri: lb://APPLICATION-02
-            predicates:
-              - Path=/application/welcome/**
+        - id: service-01
+          uri: lb://APPLICATION-01
+          predicates:
+            - Path=/application/hello
+        - id: service-02
+          uri: lb://APPLICATION-02
+          predicates:
+            - Path=/application/welcome
 server:
+  address: 127.0.0.1
   port: 4444
