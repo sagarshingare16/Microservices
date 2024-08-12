@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: circuit-breaker
+management:
+  health:
+    circuitbreakers:
+      default:
+        enabled: true
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: always
+resilience4j:
+  circuitbeaker:
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowType: COUNT_BASED
+        slidingWindowSize: 10
+        minimumNumberOfCalls: 5
+        waitDurationInOpenState: 5s
+        permittedNumberOfCallsInHalfOpenState: 5
+        automaticTransitionFromHalfOpenToOpenStateEnabled: true
+        minimum-number-of-calls: 5
+  retry:
+    configs:
+      default:
+        max-attempts: 3
+        wait-duration: 1s
+server:
+  port: 8181

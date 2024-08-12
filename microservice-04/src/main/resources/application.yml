@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: microservice-04
+server:
+  port: 8080
+
